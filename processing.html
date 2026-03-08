@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyzing Your Document – Fairexit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f7f7f7;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            padding: 40px 20px;
+            background: #ffffff;
+            border-bottom: 1px solid #ddd;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .container {
+            margin: 60px auto;
+            padding: 30px;
+            background: #fff;
+            width: 90%;
+            max-width: 480px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .loader {
+            border: 6px solid #eee;
+            border-top: 6px solid #0078ff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin: 20px auto;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .note {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Analyzing Your Severance Package</h1>
+    <p>This usually takes 10–20 seconds.</p>
+</header>
+
+<div class="container">
+    <div class="loader"></div>
+    <p>We’re extracting key clauses, compensation details, and legal risk indicators.</p>
+    <p class="note">Please keep this tab open.</p>
+</div>
+
+<script>
+    // After 5 seconds, redirect to result page
+    setTimeout(() => {
+        window.location.href = "result.html";
+    }, 5000);
+</script>
+
+</body>
+</html>
