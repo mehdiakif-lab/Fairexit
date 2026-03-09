@@ -3,47 +3,55 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Upload – ExitFair</title>
+    <title>Upload Your Severance Document – ExitFair</title>
 
     <link rel="stylesheet" href="styles/main.css">
   </head>
 
-  <body>
+  <body class="hero-bg">
+
     <nav>
       <a href="index.html">Home</a> |
       <a href="upload.html">Upload</a> |
       <a href="result.html">Results</a>
     </nav>
-    <br>
 
-    <h1>Upload Your Severance Document</h1>
+    <section class="hero-container">
+      <div class="hero-card">
 
-    <p>Please upload your severance agreement or termination letter. We will analyze it securely and privately.</p>
+        <h1>Upload Your Severance Document</h1>
 
-    <!-- UPLOAD FORM -->
-    <form action="#" method="post" enctype="multipart/form-data">
-      <label for="file">Choose a file:</label><br><br>
-      <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.png" required><br><br>
+        <p class="hero-subtext">
+          Upload your severance agreement or termination letter.  
+          Your document is processed securely and never stored.
+        </p>
 
-      <button type="submit">Upload Document</button>
-    </form>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+          <label for="file">Choose a file:</label><br><br>
+          <input type="file" id="file" name="file" required><br><br>
 
-    <br><br>
+          <button type="submit" class="cta-button">
+            Upload Document
+          </button>
+        </form>
 
-    <!-- PAYMENT BUTTON ($49 CAD) -->
-    <a href="https://buy.stripe.com/7sY14pgye3tXePugRvdEs01"
-       style="display:inline-block;padding:12px 20px;background:#4CAF50;color:white;
-              text-decoration:none;border-radius:6px;font-weight:bold;">
-      Pay for Analysis ($49 CAD)
-    </a>
+        <hr class="divider">
 
-    <!-- US + CAN SUPPORT MESSAGE -->
-    <p style="margin-top:10px;color:#444;font-size:0.9rem;">
-      We support both Canadian and US customers. Payments are processed securely in CAD and accepted worldwide.
-    </p>
+        <a href="payment.html" class="cta-button">
+          Pay for Analysis ($49 CAD)
+        </a>
 
-    <p style="color:#666;font-size:0.9rem;margin-top:20px">
-      Your document is processed securely. Nothing is stored.
-    </p>
+        <p class="trust-text">
+          We support both Canadian and US customers.  
+          Payments are processed securely in CAD and accepted worldwide.
+        </p>
+
+        <p class="trust-text">
+          Your document is processed securely. Nothing is stored.
+        </p>
+
+      </div>
+    </section>
+
   </body>
 </html>
