@@ -1,49 +1,56 @@
+import OpenAI from "openai";
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).send("Method not allowed");
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  if (!global.uploadedText) {
+    return res.status(400).json({ error: "No uploaded text found" });
   }
 
   try {
-    // Make sure we have the uploaded file content
-    if (!global.tempFile) {
-      return res.status(400).send("No document found to analyze");
-    }
+    const client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
 
-    // Convert back to buffer
-    const buffer = Buffer.from(global.tempFile, "base64");
-    const text = buffer.toString("utf8");
+    const prompt = `
+You are an expert in Canadian and US employment law. Analyze the following severance agreement text and produce a structured JSON output.
 
-    // --- AI ANALYSIS LOGIC ---
-    // Replace this with your AI provider (OpenAI, Anthropic, Azure, etc.)
-    // For now, we simulate a response:
-    const analysis = `
-Severance Analysis Summary
---------------------------
+TEXT:
+${global.uploadedText}
 
-Document length: ${text.length} characters
+Return ONLY valid JSON with the following fields:
 
-Key Findings:
-- This is a placeholder analysis.
-- Once AI is connected, this will summarize:
-  • Termination reason
-  • Notice period
-  • Severance pay
-  • Release clauses
-  • Deadlines
-  • Risks
-  • Missing protections
+{
+  "summary": "...",
+  "key_terms": [...],
+  "risks": [...],
+  "missing_protections": [...],
+  "deadlines": [...],
+  "negotiation_leverage": [...],
+  "overall_assessment": "..."
+}
 `;
 
-    // Save the result temporarily
-    global.analysisResult = analysis;
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        { role: "system", content: "You are a legal analysis assistant." },
+        { role: "user", content: prompt }
+      ],
+      temperature: 0.2
+    });
 
-    // Redirect to results page
-    res.writeHead(302, { Location: "/result.html" });
-    res.end();
+    const result = completion.choices[0].message.content;
 
-  } catch (err) {
-    console.error("Analysis error:", err);
-    res.status(500).send("Analysis failed");
+    // Store result in memory
+    global.analysisResult = result;
+
+    return res.status(200).json({ success: true });
+
+  } catch (error) {
+    console.error("AI error:", error);
+    return res.status(500).json({ error: "AI analysis failed" });
   }
 }
-
