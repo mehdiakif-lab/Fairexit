@@ -7,6 +7,13 @@ body {
   line-height: 1.6;
 }
 
+/* HERO BACKGROUND */
+.hero-bg {
+  background: #1a1a1a;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
 /* NAVIGATION */
 nav {
   margin-top: 20px;
@@ -22,13 +29,6 @@ nav a {
 
 nav a:hover {
   text-decoration: underline;
-}
-
-/* HERO BACKGROUND */
-.hero-bg {
-  background: #1a1a1a;
-  min-height: 100vh;
-  padding-bottom: 60px;
 }
 
 /* HERO CONTAINER */
