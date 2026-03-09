@@ -1,4 +1,6 @@
-/* GLOBAL LAYOUT */
+/* --------------------------------------------------
+   GLOBAL LAYOUT
+-------------------------------------------------- */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   margin: 0;
@@ -7,14 +9,16 @@ body {
   line-height: 1.6;
 }
 
-/* HERO BACKGROUND */
+/* Dark background for all pages */
 .hero-bg {
   background: #1a1a1a;
   min-height: 100vh;
   padding-bottom: 60px;
 }
 
-/* NAVIGATION */
+/* --------------------------------------------------
+   NAVIGATION
+-------------------------------------------------- */
 nav {
   margin-top: 20px;
   text-align: center;
@@ -31,19 +35,21 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* HERO CONTAINER */
+/* --------------------------------------------------
+   HERO CARD LAYOUT (used on all pages)
+-------------------------------------------------- */
 .hero-container {
   display: flex;
   justify-content: center;
   margin-top: 60px;
 }
 
-/* HERO CARD */
 .hero-card {
   background: #ffffff;
   padding: 40px;
   border-radius: 14px;
   max-width: 650px;
+  width: 90%;
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
   text-align: center;
 }
@@ -60,7 +66,9 @@ nav a:hover {
   margin-bottom: 30px;
 }
 
-/* CTA BUTTON */
+/* --------------------------------------------------
+   CTA BUTTONS
+-------------------------------------------------- */
 .cta-button {
   background: #4CAF50;
   color: white;
@@ -70,13 +78,17 @@ nav a:hover {
   font-size: 1.1rem;
   font-weight: bold;
   display: inline-block;
+  cursor: pointer;
+  border: none;
 }
 
 .cta-button:hover {
   background: #3e8e41;
 }
 
-/* HOW IT WORKS SECTION */
+/* --------------------------------------------------
+   HOW IT WORKS SECTION
+-------------------------------------------------- */
 .how-it-works {
   max-width: 900px;
   margin: 60px auto 0 auto;
@@ -111,4 +123,42 @@ nav a:hover {
 
 .step p {
   color: #ccc;
+}
+
+/* --------------------------------------------------
+   UPLOAD PAGE ELEMENTS
+-------------------------------------------------- */
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="file"] {
+  font-size: 1rem;
+}
+
+.divider {
+  margin: 30px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.trust-text {
+  color: #555;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+/* --------------------------------------------------
+   RESULTS PAGE ELEMENTS
+-------------------------------------------------- */
+.result-box {
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  text-align: left;
+  color: #333;
+  border: 1px solid #ddd;
+  white-space: pre-wrap;
 }
