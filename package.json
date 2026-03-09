@@ -1,1 +1,8 @@
+{
+  "name": "fairexit-backend",
+  "version": "1.0.0",
+  "dependencies": {
+    "formidable": "^3.5.0"
+  }
+}
 
