@@ -3,30 +3,40 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Results – ExitFair</title>
+    <title>Your Severance Report – ExitFair</title>
 
     <link rel="stylesheet" href="styles/main.css">
   </head>
 
-  <body>
+  <body class="hero-bg">
+
     <nav>
       <a href="index.html">Home</a> |
       <a href="upload.html">Upload</a> |
       <a href="result.html">Results</a>
     </nav>
-    <br>
 
-    <h1>Your Severance Analysis</h1>
+    <section class="hero-container">
+      <div class="hero-card">
 
-    <p>This page will display your personalized severance analysis once processing is complete.</p>
+        <h1>Your Severance Report</h1>
 
-    <div style="margin-top:20px;padding:15px;border:1px solid #ccc;border-radius:6px;background:#fafafa;">
-      <p><strong>Status:</strong> Waiting for backend integration.</p>
-      <p><em>Your results will appear here automatically once the analysis engine is connected.</em></p>
-    </div>
+        <p class="hero-subtext">
+          Below is your AI‑generated summary.  
+          This report highlights key terms, risks, deadlines, and important clauses.
+        </p>
 
-    <p style="color:#666;font-size:0.9rem;margin-top:20px">
-      Your document is processed securely. Nothing is stored.
-    </p>
+        <div class="result-box">
+          <!-- Your backend will insert the analysis here -->
+          <p>Your analysis will appear here...</p>
+        </div>
+
+        <a href="upload.html" class="cta-button">
+          Analyze Another Document
+        </a>
+
+      </div>
+    </section>
+
   </body>
 </html>
