@@ -1,8 +1,11 @@
 export default function handler(req, res) {
   if (!global.analysisResult) {
-    return res.status(404).send("No analysis available");
+    return res.status(400).json({ error: "No analysis available" });
   }
 
-  res.status(200).send(global.analysisResult);
+  return res.status(200).json({
+    result: global.analysisResult
+  });
 }
+
 
