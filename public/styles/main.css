@@ -1,5 +1,86 @@
+/* Global layout */
 body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
-  background-color: #f7f7f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f9fc;
+  color: #222;
+  line-height: 1.6;
 }
+
+/* Centered container */
+body > * {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Navigation */
+nav {
+  margin-top: 20px;
+  text-align: center;
+}
+
+nav a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Headings */
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  color: #111;
+}
+
+/* Buttons */
+button,
+a.button {
+  background: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+}
+
+button:hover,
+a.button:hover {
+  background: #3e8e41;
+}
+
+/* Form elements */
+input[type="file"] {
+  padding: 8px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Info boxes */
+.info-box {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* Footer text */
+.small-text {
+  color: #666;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 30px;
+}
+
