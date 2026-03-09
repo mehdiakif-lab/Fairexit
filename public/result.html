@@ -13,6 +13,7 @@
     <nav>
       <a href="index.html">Home</a> |
       <a href="upload.html">Upload</a> |
+      <a href="payment.html">Payment</a> |
       <a href="result.html">Results</a>
     </nav>
 
@@ -22,13 +23,12 @@
         <h1>Your Severance Report</h1>
 
         <p class="hero-subtext">
-          Below is your AI‑generated summary.
+          Below is your AI‑generated summary.  
           This report highlights key terms, risks, deadlines, and important clauses.
         </p>
 
-        <div class="result-box">
-          <!-- Your backend will insert the analysis here -->
-          <p>Your analysis will appear here...</p>
+        <div id="analysis" class="result-box">
+          Loading your analysis...
         </div>
 
         <a href="upload.html" class="cta-button">
@@ -37,6 +37,19 @@
 
       </div>
     </section>
+
+    <script>
+      // Fetch the analysis from the backend
+      fetch("/api/result")
+        .then(res => res.text())
+        .then(text => {
+          document.getElementById("analysis").innerText = text;
+        })
+        .catch(err => {
+          document.getElementById("analysis").innerText =
+            "No analysis found. Please upload a document first.";
+        });
+    </script>
 
   </body>
 </html>
