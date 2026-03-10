@@ -3,55 +3,35 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Upload Your Severance Document – ExitFair</title>
-
+    <title>Upload – ExitFair</title>
     <link rel="stylesheet" href="styles/main.css">
   </head>
 
-  <body class="hero-bg">
-
+  <body>
     <nav>
       <a href="index.html">Home</a> |
       <a href="upload.html">Upload</a> |
       <a href="result.html">Results</a>
     </nav>
+    <br>
 
-    <section class="hero-container">
-      <div class="hero-card">
+    <h1>Upload your severance agreement</h1>
 
-        <h1>Upload Your Severance Document</h1>
+    <form action="/api/upload" method="post" enctype="multipart/form-data">
+      <label for="file">Choose your document (PDF, DOCX):</label><br>
+      <input type="file" id="file" name="file" required><br><br>
 
-        <p class="hero-subtext">
-          Upload your severance agreement or termination letter.
-          Your document is processed securely and never stored.
-        </p>
+      <button type="submit">Upload document</button>
+    </form>
 
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-          <label for="file">Choose a file:</label><br><br>
-          <input type="file" id="file" name="file" required><br><br>
+    <hr>
 
-          <button type="submit" class="cta-button">
-            Upload Document
-          </button>
-        </form>
+    <h2>Step 2 – Pay securely</h2>
+    <p>Once your document is uploaded, continue to secure payment:</p>
 
-        <hr class="divider">
-
-        <a href="payment.html" class="cta-button">
-          Pay for Analysis ($49 CAD)
-        </a>
-
-        <p class="trust-text">
-          We support both Canadian and US customers.
-          Payments are processed securely in CAD and accepted worldwide.
-        </p>
-
-        <p class="trust-text">
-          Your document is processed securely. Nothing is stored.
-        </p>
-
-      </div>
-    </section>
-
+    <!-- UPDATED STRIPE LINK -->
+    <a href="https://buy.stripe.com/cNifZjbdU5C5bDiat7dEs02" class="button">
+      Pay securely with Stripe
+    </a>
   </body>
 </html>
