@@ -7,29 +7,37 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
 
-  <body>
+  <body class="hero-bg">
+
     <nav>
       <a href="index.html">Home</a> |
       <a href="upload.html">Upload</a> |
       <a href="result.html">Results</a>
     </nav>
 
-    <h1>Upload your severance agreement</h1>
+    <div class="hero-container">
+      <div class="hero-card">
 
-    <form action="/api/upload" method="post" enctype="multipart/form-data">
-      <label for="file">Choose your document (PDF, DOCX):</label><br>
-      <input type="file" id="file" name="file" required><br><br>
+        <h1>Upload your severance agreement</h1>
 
-      <button type="submit">Upload document</button>
-    </form>
+        <form action="/api/upload" method="post" enctype="multipart/form-data">
+          <label for="file">Choose your document (PDF, DOCX):</label><br>
+          <input type="file" id="file" name="file" required><br><br>
 
-    <hr>
+          <button type="submit" class="cta-button">Upload document</button>
+        </form>
 
-    <h2>Step 2 – Pay securely</h2>
-    <p>Once your document is uploaded, continue to secure payment:</p>
+        <hr class="divider">
 
-    <a href="https://buy.stripe.com/cNifZjbdU5C5bDiat7dEs02" class="button">
-      Pay securely with Stripe
-    </a>
+        <h2>Step 2 – Pay securely</h2>
+        <p class="trust-text">Once your document is uploaded, continue to secure payment:</p>
+
+        <a href="https://buy.stripe.com/cNifZjbdU5C5bDiat7dEs02" class="cta-button">
+          Pay securely with Stripe
+        </a>
+
+      </div>
+    </div>
+
   </body>
 </html>
