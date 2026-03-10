@@ -4,8 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Results – ExitFair</title>
-
-    <!-- Correct CSS path -->
     <link rel="stylesheet" href="styles/main.css">
 
     <script>
@@ -14,7 +12,6 @@
       async function loadResult() {
         const res = await fetch(`/api/result?jobId=${jobId}`);
         const data = await res.json();
-
         document.getElementById("analysis").innerText = data.analysis || "No analysis found.";
       }
 
@@ -29,7 +26,6 @@
     </nav>
 
     <h1>Your Analysis</h1>
-
     <pre id="analysis"></pre>
   </body>
 </html>
