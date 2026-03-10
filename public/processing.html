@@ -5,72 +5,30 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Processing – ExitFair</title>
 
+    <!-- Correct CSS path -->
     <link rel="stylesheet" href="styles/main.css">
 
-    <style>
-      /* Optional: small visual upgrade */
-      .spinner {
-        width: 60px;
-        height: 60px;
-        border: 6px solid #ddd;
-        border-top-color: #4a90e2;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin: 20px auto;
+    <script>
+      // Poll backend every 3 seconds
+      const jobId = new URLSearchParams(window.location.search).get("jobId");
+
+      async function checkStatus() {
+        const res = await fetch(`/api/result?jobId=${jobId}`);
+        const data = await res.json();
+
+        if (data.status === "done") {
+          window.location.href = `result.html?jobId=${jobId}`;
+        }
       }
 
-      @keyframes spin {
-        to { transform: rotate(360deg); }
-      }
-
-      .status-box {
-        margin-top: 20px;
-        padding: 15px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        background: #fafafa;
-        max-width: 400px;
-      }
-    </style>
+      setInterval(checkStatus, 3000);
+    </script>
   </head>
 
   <body>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="upload.html">Upload</a> |
-      <a href="result.html">Results</a>
-    </nav>
-    <br>
-
-    <h1>Processing Your Document…</h1>
-
+    <h1>Processing your document…</h1>
     <p>Please wait while we analyze your severance agreement.</p>
 
     <div class="spinner"></div>
-
-    <div class="status-box">
-      <p><strong>Status:</strong> Processing…</p>
-      <p>This may take a few seconds.</p>
-    </div>
-
-    <script>
-      async function checkResult() {
-        try {
-          const response = await fetch("/api/result");
-          const data = await response.json();
-
-          if (data.result) {
-            window.location.href = "result.html";
-            return;
-          }
-        } catch (e) {
-          console.log("Still processing...");
-        }
-
-        setTimeout(checkResult, 1000);
-      }
-
-      checkResult();
-    </script>
   </body>
 </html>
