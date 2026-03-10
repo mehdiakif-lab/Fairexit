@@ -1,56 +1,45 @@
 import OpenAI from "openai";
+import fs from "fs";
+import path from "path";
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
-  if (!global.uploadedText) {
-    return res.status(400).json({ error: "No uploaded text found" });
-  }
-
   try {
+    // 1. Initialize OpenAI client (key comes from environment, NOT from code)
     const client = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
 
-    const prompt = `
-You are an expert in Canadian and US employment law. Analyze the following severance agreement text and produce a structured JSON output.
+    // 2. Load the uploaded text based on jobId
+    const { jobId } = req.body;
+    const filePath = path.join(process.cwd(), "uploads", `${jobId}.txt`);
+    const text = fs.readFileSync(filePath, "utf8");
 
-TEXT:
-${global.uploadedText}
-
-Return ONLY valid JSON with the following fields:
-
-{
-  "summary": "...",
-  "key_terms": [...],
-  "risks": [...],
-  "missing_protections": [...],
-  "deadlines": [...],
-  "negotiation_leverage": [...],
-  "overall_assessment": "..."
-}
-`;
-
+    // 3. Send to OpenAI
     const completion = await client.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4.1-mini",
       messages: [
-        { role: "system", content: "You are a legal analysis assistant." },
-        { role: "user", content: prompt }
+        {
+          role: "system",
+          content: "You are an expert in contracts.",
+        },
+        {
+          role: "user",
+          content: `Analyze this severance agreement and provide risks, clauses, and negotiation points:\n\n${text}`,
+        },
       ],
-      temperature: 0.2
+      temperature: 0.2,
     });
 
-    const result = completion.choices[0].message.content;
+    const analysis = completion.choices[0].message.content;
 
-    // Store result in memory
-    global.analysisResult = result;
+    // 4. Save result
+    const resultPath = path.join(process.cwd(), "results", `${jobId}.json`);
+    fs.writeFileSync(resultPath, JSON.stringify({ analysis }, null, 2));
 
-    return res.status(200).json({ success: true });
-
+    // 5. Respond OK
+    res.status(200).json({ success: true, jobId });
   } catch (error) {
-    console.error("AI error:", error);
-    return res.status(500).json({ error: "AI analysis failed" });
+    console.error("Analysis error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 }
