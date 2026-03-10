@@ -3,53 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Your Severance Report – ExitFair</title>
+    <title>Results – ExitFair</title>
 
+    <!-- Correct CSS path -->
     <link rel="stylesheet" href="styles/main.css">
-  </head>
-
-  <body class="hero-bg">
-
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="upload.html">Upload</a> |
-      <a href="payment.html">Payment</a> |
-      <a href="result.html">Results</a>
-    </nav>
-
-    <section class="hero-container">
-      <div class="hero-card">
-
-        <h1>Your Severance Report</h1>
-
-        <p class="hero-subtext">
-          Below is your AI‑generated summary.  
-          This report highlights key terms, risks, deadlines, and important clauses.
-        </p>
-
-        <div id="analysis" class="result-box">
-          Loading your analysis...
-        </div>
-
-        <a href="upload.html" class="cta-button">
-          Analyze Another Document
-        </a>
-
-      </div>
-    </section>
 
     <script>
-      // Fetch the analysis from the backend
-      fetch("/api/result")
-        .then(res => res.text())
-        .then(text => {
-          document.getElementById("analysis").innerText = text;
-        })
-        .catch(err => {
-          document.getElementById("analysis").innerText =
-            "No analysis found. Please upload a document first.";
-        });
-    </script>
+      const jobId = new URLSearchParams(window.location.search).get("jobId");
 
+      async function loadResult() {
+        const res = await fetch(`/api/result?jobId=${jobId}`);
+        const data = await res.json();
+
+        document.getElementById("analysis").innerText = data.analysis || "No analysis found.";
+      }
+
+      loadResult();
+    </script>
+  </head>
+
+  <body>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="upload.html">Upload</a>
+    </nav>
+
+    <h1>Your Analysis</h1>
+
+    <pre id="analysis"></pre>
   </body>
 </html>
